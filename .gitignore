@@ -1,0 +1,36 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDE - VSCode
+.vscode
+.idea
+
+
+# misc
+*.log
+.npmrc
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# lint
+/.husky
+
+# auto generated
+/types/auto-imports.d.ts
+/types/components.d.ts
+
+# local env files
+.env.local
+.env.*.local
