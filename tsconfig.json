@@ -10,27 +10,13 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": ".",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "types": [
-      "vite/client"
-    ],
+    "lib": ["ESNext", "DOM"],
+    "types": ["vite/client"],
     "paths": {
-      "@/*":["src/*"]
+      "@/*": ["src/*"]
     },
-    "typeRoots": [
-      "types"
-    ]
+    "typeRoots": ["types"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue",
-    "types/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "vite.config.ts", "types/*.d.ts"],
+  "exclude": ["node_modules"]
 }
