@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+const { program } = require('commander')
+const { version } = require('./../../package.json')
+
+program
+    .name('Project Managerment CLI')
+    .addCommand(null)
+    .addHelpCommand(false)
+    .helpOption('-h, --help', '帮助说明')
+    .version(version, '-v, --version', '当前版本')
+
+program.parse(process.argv)
+program.showSuggestionAfterError()
