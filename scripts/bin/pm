@@ -2,10 +2,11 @@
 
 const { program } = require('commander')
 const { version } = require('./../../package.json')
+const cleanCommand = require('../commands/clean')
 
 program
     .name('Project Managerment CLI')
-    .addCommand(null)
+    .addCommand(cleanCommand)
     .addHelpCommand(false)
     .helpOption('-h, --help', '帮助说明')
     .version(version, '-v, --version', '当前版本')

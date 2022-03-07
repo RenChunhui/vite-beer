@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
-import Pages from 'vite-plugin-pages'
+import { viteMockServe } from 'vite-plugin-mock'
 import path from 'path'
 
 // https://vitejs.dev/config/
@@ -13,6 +13,15 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
   return {
     plugins: [
       vue(),
+      viteMockServe({
+        mockPath: 'mocks',
+        localEnabled: mode === 'development',
+        prodEnabled: false,
+        injectCode: `
+          import { mountProdMockServer } from './mocks'
+          mountProdMockServer()
+        `
+      }),
       AutoImport({
         imports: [],
         dts: path.resolve(__dirname, 'types/auto-imports.d.ts'),
@@ -22,10 +31,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         dirs: [path.resolve(__dirname, 'src/components')],
         resolvers: [NaiveUiResolver()],
         dts: path.resolve(__dirname, 'types/components.d.ts'),
-      }),
-      Pages({
-        dirs: path.resolve(__dirname, 'src/views'),
-      }),
+      })
     ],
     resolve: {
       alias: {

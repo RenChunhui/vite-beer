@@ -25,12 +25,18 @@ for (const extension of extensions) {
 console.log(`✔ 完成插件安装`)
 
 const { bin } = require('./../../package.json')
-const binName = bin.replace('./scripts/bin/', '')
 
-exec(binName, (error, stdout, stderr) => {
-  if (error) {
-    execSync('npm i -g', { stdio: 'inherit' })
-    console.log(`✔ 成功安装 ${binName} cli`)
-    return
-  }
+Object.keys(bin).map(key => {
+  
 })
+console.log('bin:',bin)
+
+
+
+// exec(binName, (error, stdout, stderr) => {
+//   if (error) {
+//     execSync('npm i -g', { stdio: 'inherit' })
+//     console.log(`✔ 成功安装 ${binName} cli`)
+//     return
+//   }
+// })
