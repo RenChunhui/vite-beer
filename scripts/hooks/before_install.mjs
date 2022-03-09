@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
+import { execSync } from 'child_process'
+import ansi from '../lib/ansi.mjs'
 
 // 创建本地 .npmrc
-function createMirror() {
+function createNpmrc() {
   fs.access('.npmrc', (err) => {
     if (err && err.code === 'ENOENT') {
       fs.writeFile(path.join(process.cwd(), '.npmrc'), 'registry=https://registry.npmmirror.com', () => {
-        console.log(`✔ 成功创建本地 .npmrc`)
+        console.log(`${ansi.fgGreen}✔${ansi.reset} 成功创建本地 .npmrc`)
       })
     }
   })
@@ -19,14 +21,32 @@ function createLocalEnv() {
   fs.access('.env.local', (err) => {
     if (err && err.code === 'ENOENT') {
       fs.writeFile(path.join(process.cwd(), '.env.local'), '', () => {
-        console.log(`✔ 成功创建本地 .env.local`)
+        console.log(`${ansi.fgGreen}✔${ansi.reset} 成功创建本地 .env.local`)
       })
     }
   })
 }
 
-// 创建 vscode 配置文件
-function createConfiguration() {
+// 配置 VSCode 开发环境
+function setupVSCode() {
+  const extensions = [
+    { id: 'johnsoncodehk.volar', desc: 'Volar' },
+    { id: 'johnsoncodehk.vscode-typescript-vue-plugin', desc: 'TypeScript Vue Plugin' },
+    { id: 'esbenp.prettier-vscode', desc: 'Prettier' },
+    { id: 'bradlc.vscode-tailwindcss', desc: 'Tailwind CSS IntelliSense' },
+  ]
+
+  const installed = Buffer.from(execSync('code --list-extensions'), 'utf-8')
+    .toString()
+    .split(/[\s\n]/)
+
+  for (const extension of extensions) {
+    if (installed.indexOf(extension.id) === -1) {
+      execSync(`code --install-extension ${extension.id}`)
+      console.log(`${ansi.fgGreen}✔${ansi.reset} 成功安装 ${extension.desc}`)
+    }
+  }
+
   fs.rmSync(`${process.cwd()}/.vscode`, { recursive: true, force: true }, (err) => {})
   fs.mkdirSync(`${process.cwd()}/.vscode`)
   fs.writeFileSync(
@@ -55,7 +75,15 @@ function createConfiguration() {
 }
 `,
     () => {
-      console.log(`✔ 成功配置本地 vscode`)
+      console.log(`${ansi.fgGreen}✔${ansi.reset} 成功配置本地 vscode`)
     }
   )
 }
+
+function main() {
+  createNpmrc()
+  createLocalEnv()
+  setupVSCode()
+}
+
+main()

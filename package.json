@@ -1,12 +1,13 @@
 {
   "name": "vite-beer",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.cjs,.mjs,.ts --fix --ignore-path .gitignore",
+    "preinstall": "node scripts/hooks/before_install.mjs"
   },
   "dependencies": {
     "axios": "^0.26.0",

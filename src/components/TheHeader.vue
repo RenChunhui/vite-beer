@@ -1,26 +1,10 @@
 <template>
-  <div class="w-12 h-12 flex justify-center items-center mr-2">
-    <app-icon icon-size="20" class="cursor-pointer" @click="menuClick">
-      <icon-menu />
+  <n-el class="flex items-center w-full h-14 p-4">
+    <app-icon icon-size="24" @click="handleClick">
+      <icon-menu-fold></icon-menu-fold>
     </app-icon>
-  </div>
-  <div class="flex-1">
-    <span>Title</span>
-  </div>
-  <div class="w-48 h-12 flex justify-around items-center">
-    <app-icon icon-size="20" class="cursor-pointer">
-      <icon-search></icon-search>
-    </app-icon>
-    <app-icon icon-size="20" class="cursor-pointer">
-      <icon-notification></icon-notification>
-    </app-icon>
-    <app-icon icon-size="20" class="cursor-pointer">
-      <icon-user-avatar></icon-user-avatar>
-    </app-icon>
-    <app-icon icon-size="20" class="cursor-pointer">
-      <icon-app-switcher></icon-app-switcher>
-    </app-icon>
-  </div>
+    <span class="ml-8">Vite Beer</span>
+  </n-el>
 </template>
 
 <script lang="ts" setup>
@@ -28,7 +12,7 @@ import { useAppStore } from '@/store/app'
 
 const appStore = useAppStore()
 
-function menuClick() {
+function handleClick() {
   appStore.collapsed = !appStore.collapsed
 }
 </script>

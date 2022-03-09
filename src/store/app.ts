@@ -1,18 +1,15 @@
-import { TreeOption } from 'naive-ui'
+import type { GlobalThemeOverrides } from 'naive-ui'
 import { defineStore } from 'pinia'
 
-type AppOptions = {
-  router: {
-    /** 白名单 */
-    whiteList: string[],
-    /** 登录页地址 */
-    login: string,
-    /** 默认页 */
-    default: string
+const darkThemeOverrides: GlobalThemeOverrides = {
+  common: {
+    primaryColor: '#161616',
+    infoColor: '#4589ff',
+    successColor: '#24a148',
+    warningColor: '#f1c21b',
+    errorColor: '#da1e28',
   },
-  /** 侧栏开关 */
-  collapsed: boolean,
-  menus: TreeOption[]
+  Layout: {},
 }
 
 export const useAppStore = defineStore('app', {
@@ -20,9 +17,9 @@ export const useAppStore = defineStore('app', {
     router: {
       whiteList: [],
       login: '/login',
-      default: '/home'
+      default: '/home',
     },
     collapsed: false,
-    menus: []
-  } as AppOptions)
+    theme: darkThemeOverrides,
+  }),
 })
