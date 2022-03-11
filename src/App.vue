@@ -1,5 +1,5 @@
 <template>
-  <n-config-provider :theme="darkTheme" :theme-overrides="appStore.theme">
+  <n-config-provider>
     <router-view></router-view>
   </n-config-provider>
 </template>

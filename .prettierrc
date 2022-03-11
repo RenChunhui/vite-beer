@@ -10,10 +10,22 @@
   "endOfLine": "lf",
   "overrides": [
     {
-      "files": ["Makefile", "**.mk"],
+      "files": [
+        "Makefile",
+        "**.mk"
+      ],
       "options": {
         "tabWidth": 4,
         "useTabs": true
+      }
+    },
+    {
+      "files": [
+        "*.md"
+      ],
+      "options": {
+        "tabWidth": 2,
+        "useTabs": false
       }
     },
     {
