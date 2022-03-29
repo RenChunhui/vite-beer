@@ -16,30 +16,12 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "lib": [
-      "ES2016",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "types": [
-      "node",
-      "vite/client",
-      "naive-ui/volar"
-    ],
-    "typeRoots": [
-      "types"
-    ]
+    "lib": ["ES2016", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client", "naive-ui/volar"],
+    "typeRoots": ["types"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "types/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.vue", "types/*.d.ts"],
+  "exclude": ["node_modules"]
 }

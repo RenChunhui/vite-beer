@@ -13,15 +13,15 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
   return {
     plugins: [
       vue(),
-      viteMockServe({
-        mockPath: 'mocks',
-        localEnabled: mode === 'development',
-        prodEnabled: false,
-        injectCode: `
-          import { mountProdMockServer } from './mocks'
-          mountProdMockServer()
-        `,
-      }),
+      // viteMockServe({
+      //   mockPath: 'mocks',
+      //   localEnabled: mode === 'development',
+      //   prodEnabled: false,
+      //   injectCode: `
+      //     import { mountProdMockServer } from './mocks'
+      //     mountProdMockServer()
+      //   `,
+      // }),
       AutoImport({
         imports: [],
         dts: path.resolve(__dirname, 'types/auto-imports.d.ts'),

@@ -7,22 +7,17 @@
   "bracketSpacing": true,
   "bracketSameLine": true,
   "arrowParens": "always",
-  "endOfLine": "lf",
+  "endOfLine": "auto",
   "overrides": [
     {
-      "files": [
-        "Makefile",
-        "**.mk"
-      ],
+      "files": ["Makefile", "**.mk"],
       "options": {
         "tabWidth": 4,
         "useTabs": true
       }
     },
     {
-      "files": [
-        "*.md"
-      ],
+      "files": ["*.md"],
       "options": {
         "tabWidth": 2,
         "useTabs": false
